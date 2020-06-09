@@ -14,11 +14,11 @@ $table = $_GET['table'];
         
 $str = "";
 if (isset($_GET['bind'])) {
-    $bind = explode("_", $_GET['bind']);
+    $bind = explode("~", $_GET['bind']);
     if (!isset($_GET['values'])) {
         die('\{"info":"no value provided"\}');
     }
-    $values = explode("_", $_GET['values']);
+    $values = explode("~", $_GET['values']);
 
     if (count($bind) > 0) {
         $str = " WHERE ";
@@ -51,7 +51,7 @@ function getData(PDO $pdo, string $query): ?string {
         $tmp = ":" . $b;
         $stmt->bindValue($tmp, $values[$index], PDO::PARAM_STR);
     }
-    
+    var_dump($stmt);
     $stmt->execute();
     errorHandler($stmt);
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
