@@ -4,22 +4,27 @@ require_once __DIR__ . "/admin_co.php";
 if (isset($_GET['name'])) {
 
     $infos = [
-        'img_link' => $_GET['img_link'],
-        'name' => $_GET['name'],
-        'zone' => $_GET['zone'],
-        'weight' => $_GET['weight'],
-        'size' => $_GET['size'],
-        'longevity' => $_GET['longevity'],
-        'reproduction' => $_GET['reproduction'],
-        'family' => $_GET['family'],
-        'species' => $_GET['species'],
-        'map_link' => $_GET['map_link'],
-        'video_link' => $_GET['video_link'],
-        'details' => $_GET['details']
+        'img_link' => null,
+        'name' => null,
+        'zone' => null,
+        'weight' => null,
+        'size' => null,
+        'longevity' => null,
+        'reproduction' => null,
+        'family' => null,
+        'species' => null,
+        'map_link' => null,
+        'video_link' => null,
+        'details' => null
     ];
-    // addToPrim($pdo, $infos);
-    // addToSec($pdo, $infos);
-    echo isset($_GET['reproduction']);
+    foreach($infos as $key => $inf) {
+        if ($_GET[$key] !== '') {
+            $infos[$key] = $_GET[$key];
+        }
+    }
+    var_dump($infos);
+    addToPrim($pdo, $infos);
+    addToSec($pdo, $infos);
 }
 
 //add to primary DB the img link and zone for one element
