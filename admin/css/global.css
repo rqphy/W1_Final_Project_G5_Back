@@ -1,0 +1,13 @@
+:root {
+  --maincolor: #3594ae;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #131313;
+}

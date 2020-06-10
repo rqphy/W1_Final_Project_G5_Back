@@ -1,7 +1,7 @@
 CREATE TABLE sec (
     id_animals INT(3) NOT NULL AUTO_INCREMENT,
     name VARCHAR(30) NOT NULL,
-    zone VARCHAR(5) NOT NULL,
+    zone INT(3) NOT NULL,
     weight VARCHAR(20) NULL,
     size VARCHAR(50) NULL,
     longevity VARCHAR(150) NULL,

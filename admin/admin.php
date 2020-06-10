@@ -1,21 +1,26 @@
 <?php
 require_once __DIR__ . "/admin_co.php";
 
-$test = $_GET["test"] ?? '';
-$infos = [
-    'img_link' => 'mariette',
-    'name' => 'Mariette',
-    'zone' => 3,
-    'weight' => 'very heavy',
-    'size' => 'huge AF',
-    'longevity' => '4,3 M yo',
-    'reproduction' => 'he geres de la go',
-    'family' => "yevette's dodgy cousin",
-    'species' => 'unique individual',
-    'map_link' => 'mariette_map',
-    'video_link' => 'UAGhdiaj',
-    'details' => 'pose pas de questions yaura pas de reponses'
-];
+if (isset($_GET['name'])) {
+
+    $infos = [
+        'img_link' => $_GET['img_link'],
+        'name' => $_GET['name'],
+        'zone' => $_GET['zone'],
+        'weight' => $_GET['weight'],
+        'size' => $_GET['size'],
+        'longevity' => $_GET['longevity'],
+        'reproduction' => $_GET['reproduction'],
+        'family' => $_GET['family'],
+        'species' => $_GET['species'],
+        'map_link' => $_GET['map_link'],
+        'video_link' => $_GET['video_link'],
+        'details' => $_GET['details']
+    ];
+    // addToPrim($pdo, $infos);
+    // addToSec($pdo, $infos);
+    echo isset($_GET['reproduction']);
+}
 
 //add to primary DB the img link and zone for one element
 function addToPrim( PDO $pdo, array $infos): void{
@@ -49,7 +54,3 @@ function addToSec( PDO $pdo, array $infos): void{
 }
     
 // calls both functions above if test has a value
-if ($test !== '') {
-    addToPrim($pdo, $infos);
-    addToSec($pdo, $infos);
-}

@@ -1,0 +1,19 @@
+@import "reset.css";
+@import "global.css";
+
+.add {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.add__label {
+  color: var(--maincolor);
+  font-family: sans-serif;
+  text-transform: capitalize;
+  margin-top: 10px;
+}
+
+button {
+  margin-top: 10px;
+}

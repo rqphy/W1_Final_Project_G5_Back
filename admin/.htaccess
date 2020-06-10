@@ -1,4 +1,4 @@
 AuthName "plslogin"
 AuthType Basic
-AuthUserFile "/.htpasswd"
+AuthUserFile "C:\wamp64\www\repo\W1_Final_Project_G5_Back\admin\.htpasswd"
 Require valid-user
