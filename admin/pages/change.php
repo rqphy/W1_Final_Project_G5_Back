@@ -14,7 +14,7 @@ function getData(PDO $pdo, string $info) {
     return $stmt->fetch()[0];
 }
 
-getData($pdo, $info);
+// getData($pdo, $info);
 ?>
 
 <!DOCTYPE html>
@@ -22,13 +22,21 @@ getData($pdo, $info);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/change.css">
     <title>Edit <?= $info?></title>
 </head>
 <body>
-    <form method='GET'>
-        <label for='edit'>Edit value here</label>
-        <input type="text" name="edit" id="edit" value='<?= getData($pdo, $info)?>'>
-
-    </form>
+    <?php 
+        if (isset($_GET['info'])) {
+            echo '
+            <form method="GET" class="editForm">
+                <label for="edit">Edit value here</label>
+                <textarea type="text" name="edit" id="edit">' . getData($pdo, $info) . '?</textarea>
+                <button>Submit</button>
+            </form>';
+        } else echo '<p>Data Base edited</p>'
+    ?>
+    
+    
 </body>
 </html>
