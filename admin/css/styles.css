@@ -1,14 +1,6 @@
 @import "reset.css";
 @import "global.css";
 
-.title {
-  color: var(--maincolor);
-  font-size: 32px;
-  max-width: 80%;
-  font-weight: bold;
-  font-family: sans-serif;
-}
-
 .hero {
   display: flex;
   flex-direction: column;

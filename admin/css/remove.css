@@ -1,0 +1,31 @@
+@import "reset.css";
+@import "global.css";
+
+table {
+  width: 80%;
+  color: var(--maincolor);
+  border: 2px solid var(--maincolor);
+  font-family: sans-serif;
+}
+
+th {
+  color: #131313;
+  background-color: var(--maincolor);
+  padding: 10px 0px;
+}
+
+td {
+  text-transform: capitalize;
+  border: 0.5px solid var(--maincolor);
+  margin-top: 2px;
+  padding: 5px 3px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.delete {
+  background-color: red;
+}

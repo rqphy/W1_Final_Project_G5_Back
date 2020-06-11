@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="../css/add.css">
 </head>
 <body>
+  <a href="../back_office.php" class="link">Back Office</a>
+  <h1 class="title">Add an animal</h1>
   <form action="../admin.php" method="GET" class="add">
     <label for="img_link" class="add__label">img_link:</label>
     <input type="text" id="img_link" name="img_link" required placeholder="imgname">

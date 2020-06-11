@@ -2,6 +2,22 @@
   --maincolor: #3594ae;
 }
 
+.link {
+  text-decoration: none;
+  color: var(--maincolor);
+  font-family: sans-serif;
+  margin-top: 10px;
+}
+
+.title {
+  color: var(--maincolor);
+  font-size: 32px;
+  max-width: 80%;
+  font-weight: bold;
+  font-family: sans-serif;
+  margin-top: 10px;
+}
+
 body {
   display: flex;
   flex-direction: column;
