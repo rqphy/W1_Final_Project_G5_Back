@@ -26,7 +26,7 @@ function buildTable($key, $info) {
       ' . $info . '
     </td>
     <td class="edit">
-      <a href="change.php?info=' . $key . '">Change</a>
+      <a href="change.php?info=' . $key . '&id=' . $_GET['id'] . '">Change</a>
     </td>
   </tr>
   ';
