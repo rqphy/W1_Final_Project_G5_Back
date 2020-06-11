@@ -33,6 +33,7 @@ $infos = getData($pdo);
   <link rel="stylesheet" href="../css/remove.css">
 </head>
 <body>
+  <a href="back_office.php" class="link">Back Office</a>
   <table>
     <thead>
       <tr>
