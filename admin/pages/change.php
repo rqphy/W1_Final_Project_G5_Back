@@ -20,6 +20,27 @@ function getData(PDO $pdo, string $info) {
     return $stmt->fetch()[0];
 }
 
+function editData(PDO $pdo, string $tab) {
+    $stmt = $pdo->prepare('
+    UPDATE ' . $tab . '
+    SET ' . $_GET['info'] . ' = "' . $_GET['edit'] . '"
+    ');
+    $stmt->execute();
+    var_dump($stmt);
+}
+
+if (isset($_GET['edit'])) {
+    if ($_GET['info'] === 'img_link' || $_GET['info'] === 'zone') {
+        editData($pdo, 'prim');
+        echo 'prim';
+    }
+    else {
+        editData($pdo, 'sec');
+        echo 'sec';
+    }
+}
+
+
 ?>
 
 <!DOCTYPE html>
