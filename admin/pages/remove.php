@@ -11,8 +11,11 @@ function buildTable(array $info) {
   echo '
   <tr>
     <td width="80%">' . $info["name"] . '</td>
+    <td class="edit">
+      <a href="edit.php?id=' . $info["id_animals"] . '">Edit</a>
+    </td>
     <td class="delete">
-      <a href=delete.php?id=' . $info["id_animals"] .'>delete</a>
+      <a href="delete.php?id=' . $info["id_animals"] .'">delete</a>
     </td>
   </tr>
   ';
@@ -26,14 +29,14 @@ $infos = getData($pdo);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Remove</title>
   <link rel="stylesheet" href="../css/remove.css">
 </head>
 <body>
   <table>
     <thead>
       <tr>
-        <th colspan="2">Animals</th>
+        <th colspan="3">Animals</th>
       </tr>
     </thead>
     <tbody>
