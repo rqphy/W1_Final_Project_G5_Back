@@ -2,6 +2,12 @@
 require_once __DIR__ . "/../admin_co.php";
 
 $info = $_GET['info'] ?? '';
+$dataSubmited = '
+    <div class="submited">
+        <p>Data Base edited</p>
+        <a href="back_office.php" class="link">Back to main menu</a>
+    </div>
+';
 
 function getData(PDO $pdo, string $info) {
     $table = $info !== 'img_link' ? 'sec' : 'prim';
@@ -14,7 +20,6 @@ function getData(PDO $pdo, string $info) {
     return $stmt->fetch()[0];
 }
 
-// getData($pdo, $info);
 ?>
 
 <!DOCTYPE html>
@@ -27,14 +32,17 @@ function getData(PDO $pdo, string $info) {
 </head>
 <body>
     <?php 
-        if (isset($_GET['info'])) {
+        if (isset($_GET['info']) && !isset($_GET['edit'])) {
             echo '
             <form method="GET" class="editForm">
+                <input type="text" name="info" id="info" class="disabled" value="' . $info .'">
+                <input type="text" name="id" id="id" class="disabled" value="' . $_GET['id'] . '">
                 <label for="edit">Edit value here</label>
-                <textarea type="text" name="edit" id="edit">' . getData($pdo, $info) . '?</textarea>
+                <textarea type="text" name="edit" id="edit">' . getData($pdo, $info) . '</textarea>
                 <button>Submit</button>
             </form>';
-        } else echo '<p>Data Base edited</p>'
+        }
+        if (isset($_GET['edit'])) echo $dataSubmited;
     ?>
     
     
