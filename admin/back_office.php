@@ -10,8 +10,7 @@
   <h1 class="title">Welcome to the back office</h1>
   <main class="hero">
     <a href="./pages/add.php" class="hero__link">Add To Data Base</a>
-    <a href="./pages/remove.php" class="hero__link">Remove From Data Base</a>
-    <a href="#" class="hero__link">Add To Data Base</a>
+    <a href="./pages/remove.php" class="hero__link">Edit / Delete</a>
   </main>
 </body>
 </html>
