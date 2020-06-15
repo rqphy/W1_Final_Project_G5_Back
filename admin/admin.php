@@ -2,12 +2,17 @@
 require_once __DIR__ . "/admin_co.php";
 
 $binds = [];
+$dataSubmited = '
+    <div class="submited">
+        <p>Data Base edited</p>
+        <a href="pages/back_office.php" class="link">Back to main menu</a>
+    </div>
+';
 
 // if name is set => user sent infos
-if (isset($_GET['name'])) {
+if (isset($_GET['name']) && isset($_GET['zone']) && isset($_GET['link'])) {
 
     $infos = [
-        'img_link' => null,
         'name' => null,
         'zone' => null,
         'weight' => null,
@@ -16,7 +21,7 @@ if (isset($_GET['name'])) {
         'reproduction' => null,
         'family' => null,
         'species' => null,
-        'map_link' => null,
+        'link' => null,
         'video_link' => null,
         'details' => null
     ];
@@ -25,26 +30,32 @@ if (isset($_GET['name'])) {
         if ($_GET[$key] !== '') {
             $infos[$key] = $_GET[$key];
         }
-        if ($key !== 'img_link') $binds[':'.$key] = $infos[$key];
+        $binds[':'.$key] = $infos[$key];
     }
-    addToPrim($pdo, $infos);
-    addToSec($pdo, $binds);
+    addToDb($pdo, $binds);
+    ?>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/styles.css">
+        <title>Submited</title>
+    </head>
+    <body>
+        <?= $dataSubmited?>
+    </body>
+    </html>
+    <?php
 }
 
-//add to primary DB the img link and zone for one element
-function addToPrim( PDO $pdo, array $infos): void{
-    $stmt = $pdo->prepare('
-    INSERT INTO prim (img_link, zone)
-    VALUES (?, ?);
-    ');
-    $stmt->execute([$infos['img_link'], $infos['zone']]);
-}
+
 
 //add to secondary DB the rest of the info for one element
-function addToSec( PDO $pdo, array $infos): void{
+function addToDb( PDO $pdo, array $infos): void{
     $stmt = $pdo->prepare('
-    INSERT INTO sec (name, zone, weight, size, longevity, reproduction, family, species, map_link, video_link, details)
-    VALUES (:name, :zone, :weight, :size, :longevity, :reproduction, :family, :species, :map_link, :video_link, :details);
+    INSERT INTO infos (name, zone, weight, size, longevity, reproduction, family, species, link, video_link, details)
+    VALUES (:name, :zone, :weight, :size, :longevity, :reproduction, :family, :species, :link, :video_link, :details);
     ');
     $stmt->execute($infos);
 }

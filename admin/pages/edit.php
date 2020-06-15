@@ -2,14 +2,13 @@
 require_once __DIR__ . "/../admin_co.php";
 
 if (isset($_GET['id'])) {
-  $infos = getData($pdo, 'prim', $_GET['id']);
-  array_push($infos, getData($pdo, 'sec', $_GET['id'])[0]);
+  $infos = getData($pdo, $_GET['id']);
 }
 
 
-function getData(PDO $pdo, string $table, int $id): array {
+function getData(PDO $pdo, int $id): array {
   $stmt = $pdo->prepare('
-    SELECT * FROM ' . $table . ' WHERE id_animals = :id;
+    SELECT * FROM infos WHERE id_animals = :id;
   ');
   $stmt->bindValue(':id', $id);
   $stmt->execute();
@@ -50,10 +49,8 @@ function buildTable($key, $info) {
     </thead>
     <tbody>
         <?php
-          foreach ($infos as $info) {
-            foreach ($info as $key => $value) {
+            foreach ($infos[0] as $key => $value) {
               buildTable($key, $value);
-            }
           }
         ?>
     </tbody>

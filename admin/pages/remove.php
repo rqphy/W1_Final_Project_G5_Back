@@ -2,7 +2,7 @@
 require_once __DIR__ . "/../admin_co.php";
 
 function getData(PDO $pdo): array {
-  $stmt = $pdo->prepare('SELECT * FROM sec;');
+  $stmt = $pdo->prepare('SELECT * FROM infos;');
   $stmt->execute();
   return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }

@@ -10,34 +10,25 @@ $dataSubmited = '
 ';
 
 function getData(PDO $pdo, string $info) {
-    $table = $info !== 'img_link' ? 'sec' : 'prim';
     $stmt = $pdo->prepare('
     SELECT ' . $info . '
-    FROM ' . $table . '
+    FROM infos
     WHERE id_animals = ' . $_GET['id']
     );
     $stmt->execute();
     return $stmt->fetch()[0];
 }
 
-function editData(PDO $pdo, string $tab) {
+function editData(PDO $pdo) {
     $stmt = $pdo->prepare('
-    UPDATE ' . $tab . '
+    UPDATE infos
     SET ' . $_GET['info'] . ' = "' . $_GET['edit'] . '"
     ');
     $stmt->execute();
-    var_dump($stmt);
 }
 
 if (isset($_GET['edit'])) {
-    if ($_GET['info'] === 'img_link' || $_GET['info'] === 'zone') {
-        editData($pdo, 'prim');
-        echo 'prim';
-    }
-    else {
-        editData($pdo, 'sec');
-        echo 'sec';
-    }
+        editData($pdo);
 }
 
 
