@@ -23,7 +23,8 @@ function editData(PDO $pdo) {
     $stmt = $pdo->prepare('
     UPDATE infos
     SET ' . $_GET['info'] . ' = "' . $_GET['edit'] . '"
-    ');
+    WHERE id_animals = ' . $_GET['id']
+    );
     $stmt->execute();
 }
 
